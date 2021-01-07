@@ -1,2 +1,2 @@
-# cs264
-cs264_software_design_and_development
+# cs246
+cs246_software_design_and_development
