@@ -1,10 +1,10 @@
 public class User
 {
 
-    String password;
-    String salt;
-    String hash;
-    String hashString;
+    private String password;
+    private String salt;
+    private String hash;
+    private String hashString;
 
     // CONSTRUCTORS
 
