@@ -6,19 +6,44 @@ public class Test
     public static void main(String[] args) throws Exception
     {
         // Instance main variables
+        // Initializing them is enforced by the compiler
         String password = "";
         String salt = "";
         String hash = "";
 
-        
-        User u = new User(password, salt, hash); //instance new User object
-        Scanner input = new Scanner(System.in); // instance scanner object
-        System.out.println ("Password: "); // prompt
-        password = input.nextLine(); // store input in password var
-        u.setPassword(password); // store password in u's password variable
+        // Instance a new User object
+        User u = new User(password, salt, hash);
 
-        System.out.println ("password: " + password);
+        // Java requires this to watch for your input
+        Scanner input = new Scanner(System.in);
+
+        // Prompt for password
+        System.out.println ("Password: ");
+
+        // Store input in [local] password variable
+        password = input.nextLine();
+
+        // These lines will set
+        // salt and hash to empty
+        /*u.setSalt(salt);
+        u.setHash(hash);*/
+
+        // Call User's setPassword to set
+        // User's password private variable
+        // equivalent to the local variable's value
+        u.setPassword(password);
+
+        // Accessor for password did not work
+        // therefore, pass in the password variable itself
+        System.out.println ("password: " + password + " " + u.getHashedPassword() + " " + u.getSalt());
+
+        // Access the NSA object's function
+        // and call it against local, new User object.
         NSALoginController.hashUserPassword(u);
-        System.out.print ("Your password is: " + password);
+
+        // Output the password for view.
+        System.out.println ("Your password is: " + password);
+        System.out.println ("Your hash is: " + u.getHashedPassword() + "or: " + hash);
+        System.out.println ("Your salt is: " + u.getSalt());
     }
 }
