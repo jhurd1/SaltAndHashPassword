@@ -8,18 +8,26 @@ public class WeakPasswordException extends Exception
     boolean hasDigit = false;
 
 
-    /* Default Constructor */
+    /******************************************
+     * DEFAULT CONSTRUCTOR
+     *****************************************/
     public WeakPasswordException()
     {
         //super (password);
     }
 
-    /*Non-default Constructor*/
+    /******************************************
+     * NON-DEFAULT CONSTRUCTOR
+     *****************************************/
     public WeakPasswordException(String password)
     {
         this.password = password;
     }
 
+    /******************************************
+     * WEAKPASSWORD
+     * Ensures a password meets muster.
+     *****************************************/
     public String weakPassword ()
     {
         // Java requires this to watch for your input
@@ -33,19 +41,19 @@ public class WeakPasswordException extends Exception
             password = input.nextLine();
             User u = new User(password, salt, hash);
 
-                if (password.matches("[\\S\\s]*\\d+[\\S\\s]*"))
-                {
-                    hasDigit = true;
-                    System.out.println ("Your current hashed and salted password is: " + password + " " +
-                            u.getHashedPassword() + " " + u.getSalt());
-                } else
-                {
-                    throw new WeakPasswordException();
-                }
-                if (password.length() >= 8 && hasDigit)
-                {
-                    return password;
-                }
+            if (password.matches("[\\S\\s]*\\d+[\\S\\s]*"))
+            {
+                hasDigit = true;
+                System.out.println ("Your current hashed and salted password is: " + password + " " +
+                        u.getHashedPassword() + " " + u.getSalt());
+            } else
+            {
+                throw new WeakPasswordException();
+            }
+            if (password.length() >= 8 && hasDigit)
+            {
+                return password;
+            }
 
         } catch (WeakPasswordException e)
         {

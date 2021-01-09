@@ -35,7 +35,8 @@ public class User
      * SETSALT
      * @param salt
      *****************************************/
-    public void setSalt(String salt) {
+    public void setSalt(String salt)
+    {
         this.salt = salt;
     }
 
@@ -59,8 +60,7 @@ public class User
 
     /******************************************
      * GETPASSWORD
-     ****************************************
-     * @return*/
+     ****************************************/
     public String getPassword()
     {
         return password;
@@ -81,6 +81,4 @@ public class User
     {
         return hashString;
     }
-
-    // OTHER USER DATA MEMBERS
 }

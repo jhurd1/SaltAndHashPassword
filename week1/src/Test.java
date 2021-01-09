@@ -3,6 +3,9 @@ import java.util.Scanner;
 
 public class Test
 {
+    /******************************************
+     * MAIN
+     *****************************************/
     public static void main(String[] args) throws Exception
     {
         // Instance main variables
