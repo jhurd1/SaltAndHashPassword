@@ -79,8 +79,6 @@ public class User
      *****************************************/
     public String getHashedPassword()
     {
-        /*NSALoginController nlc = new NSALoginController();
-        nlc.getHash() = hashString;*/
         return hashString;
     }
 
