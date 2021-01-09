@@ -3,7 +3,6 @@ public class User
 
     private String password;
     private String salt;
-    private String hash;
     private String hashString;
 
     // CONSTRUCTORS
@@ -12,13 +11,13 @@ public class User
      * CONSTRUCTOR
      * @param password
      * @param salt
-     * @param hash
+     * @param hashString
      *****************************************/
-    public User(String password, String salt, String hash)
+    public User(String password, String salt, String hashString)
     {
         this.password = password;
         this.salt = salt;
-        this.hash = hash;
+        this.hashString = hashString;
     }
 
     // ACCESSORS AND MUTATORS
@@ -42,11 +41,11 @@ public class User
 
     /******************************************
      * SETHASH
-     * @param hash
+     * @param hashString
      *****************************************/
-    public void setHash(String hash)
+    public void setHash(String hashString)
     {
-        this.hash = hash;
+        this.hashString = hashString;
     }
 
     /******************************************
@@ -76,17 +75,14 @@ public class User
     }
 
     /******************************************
-     * GETHASH
-     *****************************************
-    public String getHash()
-    {
-        return hash;
-    }*/
-
-    /******************************************
      * GETHASHEDPASSWORD
      *****************************************/
-    public String getHashedPassword() {return hashString;}
+    public String getHashedPassword()
+    {
+        /*NSALoginController nlc = new NSALoginController();
+        nlc.getHash() = hashString;*/
+        return hashString;
+    }
 
     // OTHER USER DATA MEMBERS
 }

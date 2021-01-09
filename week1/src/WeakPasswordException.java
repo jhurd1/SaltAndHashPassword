@@ -3,13 +3,15 @@ import java.util.Scanner;
 public class WeakPasswordException extends Exception
 {
     private String password;
+    private String salt;
+    private String hash;
     boolean hasDigit = false;
 
 
     /* Default Constructor */
     public WeakPasswordException()
     {
-        //super (violation);
+        //super (password);
     }
 
     /*Non-default Constructor*/
@@ -25,28 +27,29 @@ public class WeakPasswordException extends Exception
 
         try
         {
-            System.out.println ("Password: ");
-            //Take the password, convert it to a character array.
+            System.out.print ("Password: ");
+
             // Store input in [local] password variable
             password = input.nextLine();
-            //char[] testPassword = password.toCharArray();
+            User u = new User(password, salt, hash);
 
                 if (password.matches("[\\S\\s]*\\d+[\\S\\s]*"))
                 {
                     hasDigit = true;
+                    System.out.println ("Your current hashed and salted password is: " + password + " " +
+                            u.getHashedPassword() + " " + u.getSalt());
                 } else
                 {
-                    System.out.println ("Weak password.");
                     throw new WeakPasswordException();
                 }
                 if (password.length() >= 8 && hasDigit)
                 {
                     return password;
                 }
-            //}
+
         } catch (WeakPasswordException e)
         {
-            System.out.println ("Password thwarted.");
+            System.out.println ("Password weak.");
             weakPassword();
         }
         return password;
