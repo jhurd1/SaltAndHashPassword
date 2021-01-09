@@ -28,7 +28,7 @@ public class Test
 
         // Output the password for view.
         System.out.println ("Your new hashed and salted password is: " + u.getHashedPassword() + u.getSalt());
-
+        u.setPassword(wpe.weakPassword());
         // Verify the password integrity
         if(NSALoginController.verifyPassword(u) == true)
         {
