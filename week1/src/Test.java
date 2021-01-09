@@ -11,27 +11,16 @@ public class Test
         String salt = "";
         String hash = "";
 
+
         // Instance a new User object
         User u = new User(password, salt, hash);
 
-        // Java requires this to watch for your input
-        Scanner input = new Scanner(System.in);
-
-        // Prompt for password
-        System.out.println ("Password: ");
-
-        // Store input in [local] password variable
-        password = input.nextLine();
-
-        // These lines will set
-        // salt and hash to empty
-        /*u.setSalt(salt);
-        u.setHash(hash);*/
-
+        // Prompt for password using a call to weakPassword()
+        WeakPasswordException wpe = new WeakPasswordException();
         // Call User's setPassword to set
         // User's password private variable
         // equivalent to the local variable's value
-        u.setPassword(password);
+        u.setPassword(wpe.weakPassword());
 
         // Accessor for password did not work
         // therefore, pass in the password variable itself
@@ -45,5 +34,8 @@ public class Test
         System.out.println ("Your password is: " + password);
         System.out.println ("Your hash is: " + u.getHashedPassword() + "or: " + hash);
         System.out.println ("Your salt is: " + u.getSalt());
+
+        // Verify the password matches the original
+        NSALoginController.verifyPassword(u);
     }
 }
